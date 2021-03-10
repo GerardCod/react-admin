@@ -8,7 +8,7 @@ import SideNav from './components/SideNav';
  * @returns component
  */
 const Wrapper = ({children}: any) => (
-    <div className="App">
+    <div>
       <Nav />
       <div className="container-fluid">
         <div className="row">

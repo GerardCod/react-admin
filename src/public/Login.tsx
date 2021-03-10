@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Public.css';
 
 const Login = () => {
     return (
-        <main className="form-signin">
+        <div className="form-signin">
             <form>
                 <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
                 <label htmlFor="inputEmail" className="visually-hidden">Email address</label>
@@ -18,7 +18,7 @@ const Login = () => {
                 <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                 <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
             </form>
-        </main>
+        </div>
     );
 }
 
