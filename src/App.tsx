@@ -9,9 +9,9 @@ import Register from './public/Register';
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={Dashboard} />
+      <Route path='/' exact component={Login} />
       <Route path='/users' component={Users} />
-      <Route path='/login' component={Login} />
+      <Route path='/home' component={Dashboard} />
       <Route path='/signup' component={Register} />
     </BrowserRouter>
   );
