@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { LoginUser } from './models/LoginUser';
 import './Public.css';
@@ -15,7 +16,8 @@ const Login = () => {
 
     const submitData = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await loginUser(data);
+        const response = await axios.post('login', data);
+        localStorage.setItem('token', response.data.token);
         console.log(response)
     }
 
