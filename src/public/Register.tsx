@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { CreateUser } from './models/CreateUser';
 import './Public.css';
-import { signupUser } from './services/ApiService';
+import client from './services/ApiService';
 
 const Register = () => {
     const [userData, setUserData] = useState(new CreateUser('', '', '', '', ''));
@@ -15,11 +15,11 @@ const Register = () => {
 
     const sendData = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (userData.password != userData.confirm_password) {
+        if (userData.password !== userData.confirm_password) {
             alert('Las contraseñas son distintas');
         } else {
-            const data = await signupUser(userData);
-            console.log(data);
+           const response = await client.post('/signup', userData);
+           console.log(response.data);
         }
     }
 
