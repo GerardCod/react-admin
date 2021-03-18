@@ -1,8 +1,7 @@
-import axios from 'axios';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { LoginUser } from './models/LoginUser';
 import './Public.css';
-import { loginUser } from './services/ApiService';
+import client from './services/ApiService';
 
 const Login = () => {
     const [data, setData] = useState(new LoginUser('',''));
@@ -16,7 +15,7 @@ const Login = () => {
 
     const submitData = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await axios.post('login', data);
+        const response = await client.post('/login', data);
         localStorage.setItem('token', response.data.token);
         console.log(response)
     }
