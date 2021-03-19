@@ -1,10 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { Redirect } from 'react-router';
 import { LoginUser } from './models/LoginUser';
 import './Public.css';
 import client from './services/ApiService';
 
 const Login = () => {
     const [data, setData] = useState(new LoginUser('',''));
+    const [redirect, setRedirect] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setData({
@@ -18,10 +20,14 @@ const Login = () => {
         const response = await client.post('/login', data);
         localStorage.setItem('token', response.data.token);
         console.log(response)
+        setRedirect(true)
     }
 
     return (
         <div className="form-signin">
+            {
+                redirect && <Redirect to={'users'} />
+            }
             <form onSubmit={submitData}>
                 <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
                 <label htmlFor="inputEmail" className="visually-hidden">Email address</label>
